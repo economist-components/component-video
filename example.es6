@@ -1,4 +1,4 @@
-import Video from './index.es6';
+import Video from './.';
 import React from 'react';
 
 export default (
