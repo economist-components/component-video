@@ -3,6 +3,7 @@ import React from 'react';
 export default class Video extends React.Component {
   static propTypes = {
     vid: React.PropTypes.string.isRequired,
+    className: React.PropTypes.string,
   }
 
   constructor(args) {
@@ -19,7 +20,7 @@ export default class Video extends React.Component {
   }
 
   render() {
-    const { vid } = this.props;
+    const { vid, className } = this.props;
     let iFrame = (
       <div className="video__player-preview">
         <img
@@ -41,7 +42,7 @@ export default class Video extends React.Component {
     }
 
     return (
-      <div className="video__container">
+      <div className={`video__container ${className}`}>
         <div className="video__player" onClick={this.loadIframe}>
           {iFrame}
         </div>
