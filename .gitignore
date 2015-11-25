@@ -1,7 +1,8 @@
 node_modules/
 *.log
 *.js
+*.html
+!karma.conf.js
 bundle.*
 /node_modules
-bundle.js
-
+/assets

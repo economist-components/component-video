@@ -1,42 +1,49 @@
 import React from 'react';
 
 export default class Video extends React.Component {
-  static get propTypes() {
-    return {
-      vid: React.PropTypes.string,
-    };
-  }
-  static get defaultProps() {
-    return {
-      vid: '-1SoMokmKhI',
-    };
+  static propTypes = {
+    vid: React.PropTypes.string.isRequired,
+    className: React.PropTypes.string,
   }
 
-  constructor() {
-    super();
-    this.state = { showIframe: false };
+  constructor(args) {
+    super(args);
+    this.loadIframe = this.loadIframe.bind(this);
   }
+
+  state = {
+    showIframe: false,
+  }
+
   loadIframe() {
     this.setState({ showIframe: true });
   }
 
   render() {
-    let iFrame;
+    const { vid, className } = this.props;
+    let iFrame = (
+      <div className="video__player-preview">
+        <img
+          src={`\/\/i.ytimg.com/vi/${vid}/hqdefault.jpg`}
+          className="video__thumb"
+        />
+        <div className="video__play-button" />
+      </div>
+    );
     if (this.state.showIframe) {
       iFrame = (
-        <iframe className="Video--iframe" frameBorder="0"
-        src={`\/\/www.youtube.com/embed/${this.props.vid}?autoplay=1&autohide=2&border=0&wmode=opaque&enablejsapi=1&
-        controls=1&showinfo=0`} />
-      );
-    } else {
-      iFrame = (
-        <div className="Video--player-preview"><img src={`\/\/i.ytimg.com/vi/${this.props.vid}/hqdefault.jpg`}
-        className="Video--thumb" /><div className="Video--play-button" /></div>
+        <iframe
+          className="video__iframe"
+          frameBorder="0"
+          src={`\/\/www.youtube.com/embed/${vid}?autoplay=1&
+          autohide=2&border=0&wmode=opaque&enablejsapi=1&controls=1&showinfo=0`}
+        />
       );
     }
+
     return (
-      <div className="Video--container">
-        <div className="Video--player" onClick={this.loadIframe.bind(this)}>
+      <div className={`video__container ${className}`}>
+        <div className="video__player" onClick={this.loadIframe}>
           {iFrame}
         </div>
       </div>
