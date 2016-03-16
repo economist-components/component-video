@@ -123,7 +123,7 @@
     "watch": "parallelshell 'npm run doc:watch' 'npm run prepublish:watch' 'npm run serve'"
   },
   "dependencies": {
-    "react": "^0.14.3"
+    "react": "^0.14.7"
   },
   "devDependencies": {
     "@economist/component-devpack": "^3.5.0",
