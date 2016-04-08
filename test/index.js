@@ -1,7 +1,8 @@
+import 'babel-polyfill';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import chai from 'chai';
-import Video from '..';
+import Video from '../src';
 
 chai.should();
 const defaultVideo = 'SZ305__0e7U';
